@@ -5,7 +5,7 @@ function App() {
 
 	return (
 		<>
-			<div></div>
+			<div className="text-2xl">Asheel</div>
 		</>
 	);
 }
