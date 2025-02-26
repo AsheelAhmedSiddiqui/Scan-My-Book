@@ -1,14 +1,18 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import books from "./bookData";
 
 function App() {
-	const [count, setCount] = useState(0);
+	const [bookCode, setBookCode] = useState();
 
-	setCount(books);
-	console.log(count);
 	return (
 		<>
-			<div className="text-2xl text-blue-900">Asheel Ahmed Siddiqui</div>
+			<input type="text" />
+			<button className="btn btn-xl">Xlarge</button>
+			{books.map((data) => (
+				<div className="text-xs" key={data.newCode}>
+					{data.newCode}
+				</div>
+			))}
 		</>
 	);
 }
