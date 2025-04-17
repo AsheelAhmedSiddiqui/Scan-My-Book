@@ -62,19 +62,32 @@ function App() {
 	const [filteredBooks, setFilteredBooks] = useState([]);
 	const inputRef = useRef(null); // ✅ Input field ka reference
 
-	const handleSearch = (e) => {
-		const inputValue = e.target.value.trim();
-		setBookCode(inputValue); // ✅ Scanner se jo value aaye, set ho jaye
+	// const handleSearch = (e) => {
+	// 	const inputValue = e.target.value.trim();
+	// 	setBookCode(inputValue); // ✅ Scanner se jo value aaye, set ho jaye
 
-		if (!inputValue) return; // Agar empty hai toh kuch na karo
+	// 	if (!inputValue) return; // Agar empty hai toh kuch na karo
 
-		const filtered = books.filter((book) => book.newCode === inputValue);
-		setFilteredBooks(filtered);
+	// 	const filtered = books.filter((book) => book.newCode === inputValue);
+	// 	setFilteredBooks(filtered);
 
-		// ✅ 1.5 min (90s) ke baad data remove karne ka timer
-			// setTimeout(() => {
-			// 	setFilteredBooks([]);
-			// }, 90000);
+	// 	// ✅ 1.5 min (90s) ke baad data remove karne ka timer
+	// 		// setTimeout(() => {
+	// 		// 	setFilteredBooks([]);
+	// 		// }, 90000);
+	// };
+
+	const handleKeyDown = (e) => {
+		if (e.key === "Enter") {
+			const inputValue = e.target.value.trim();
+			setBookCode(inputValue);
+			console.log(inputValue);
+
+			if (!inputValue) return;
+
+			const filtered = books.filter((book) => book.newCode === inputValue);
+			setFilteredBooks(filtered);
+		}
 	};
 
 	// ✅ Jab bhi `bookCode` change ho, input ko select karo
@@ -107,7 +120,7 @@ function App() {
 					min="1"
 					max="10"
 					title="Must be between 1 to 10"
-					onChange={handleSearch} // ✅ Scanner input handle karega
+					onKeyDown={handleKeyDown} // ✅ Scanner input handle karega
 					value={bookCode}
 				/>
 
