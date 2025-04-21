@@ -70,31 +70,36 @@ function App() {
 
 	// 	const filtered = books.filter((book) => book.newCode === inputValue);
 	// 	setFilteredBooks(filtered);
-
 	// 	// ✅ 1.5 min (90s) ke baad data remove karne ka timer
 	// 		// setTimeout(() => {
 	// 		// 	setFilteredBooks([]);
 	// 		// }, 90000);
 	// };
 
+	const handleChange = (e) => {
+		setBookCode(e.target.value); // ✅ Har key press pe full value update ho rahi hai
+	};
+
 	const handleKeyDown = (e) => {
 		if (e.key === "Enter") {
-			const inputValue = e.target.value.trim();
-			setBookCode(inputValue);
-			console.log(inputValue);
+			const scannedCode = bookCode.trim();
+			if (!scannedCode) return;
 
-			if (!inputValue) return;
-
-			const filtered = books.filter((book) => book.newCode === inputValue);
+			const filtered = books.filter((book) => book.newCode === scannedCode);
 			setFilteredBooks(filtered);
+
+			// ✅ Optional: Clear after 2s
+			setTimeout(() => {
+				setBookCode("");
+			}, 2000);
 		}
 	};
 
 	// ✅ Jab bhi `bookCode` change ho, input ko select karo
 	useEffect(() => {
 		if (inputRef.current) {
-			inputRef.current.focus(); // ✅ Input pe focus
-			inputRef.current.select(); // ✅ Poora text select
+			inputRef.current.focus();
+			inputRef.current.select();
 		}
 	}, [bookCode]); // ✅ Jab bhi scanner se naya code aaye, trigger hoga
 
@@ -112,16 +117,13 @@ function App() {
 			</footer>
 			<div className="flex flex-col items-center justify-center h-dvh">
 				<input
-					ref={inputRef} // ✅ Ref add kiya
-					type="number"
+					ref={inputRef}
+					type="text"
 					className="input text-center"
-					required
 					placeholder="Scan book barcode"
-					min="1"
-					max="10"
-					title="Must be between 1 to 10"
-					onKeyDown={handleKeyDown} // ✅ Scanner input handle karega
 					value={bookCode}
+					onChange={handleChange} // ✅ Yeh zaroori hai
+					onKeyDown={handleKeyDown}
 				/>
 
 				<div>
