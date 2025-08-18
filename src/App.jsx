@@ -139,14 +139,14 @@ function App() {
                     alt="Book"
                   />
                 </figure>
-                <div className="flex flex-col gap-4 ">
-                  <h1 className="text-4xl font-bold text-right">
-                    {data.bookNameInUrdu}
-                  </h1>
-                  <h1 className="text-4xl font-bold mb-5">
+                <div className="flex flex-col gap-4">
+                  <h1 className="text-4xl font-bold">
                     {data.bookNameInEnglish}
                   </h1>
-                  <h4 className="text-emerald-400 text-6xl font-bold" >
+                  <h1 className="text-4xl font-bold mb-6 text-right">
+                    {data.bookNameInUrdu}
+                  </h1>
+                  <h4 className="text-emerald-400 text-6xl font-bold">
                     Rs. {Math.round(data.price * (90 / 100))}/-
                   </h4>
                 </div>
