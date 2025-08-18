@@ -140,10 +140,10 @@ function App() {
                   />
                 </figure>
                 <div className="flex flex-col gap-4">
-                  <h1 className="text-4xl font-bold">
+                  <h1 className="text-5xl font-bold">
                     {data.bookNameInEnglish}
                   </h1>
-                  <h1 className="text-4xl font-bold mb-6 text-right">
+                  <h1 className="text-5xl font-bold mb-6 text-right">
                     {data.bookNameInUrdu}
                   </h1>
                   <h4 className="text-emerald-400 text-6xl font-bold">
