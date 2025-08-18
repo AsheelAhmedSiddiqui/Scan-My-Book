@@ -85,7 +85,9 @@ function App() {
       const scannedCode = bookCode.trim();
       if (!scannedCode) return;
 
-      const filtered = books.filter((book) => book.newCode === scannedCode);
+      const filtered = books.filter(
+        (book) => book.newCode === scannedCode || book.oldCode === scannedCode
+      );
       setFilteredBooks(filtered);
 
       // ✅ Optional: Clear after 2s
@@ -119,8 +121,8 @@ function App() {
         <input
           ref={inputRef}
           type="text"
-          className="input text-center"
-          placeholder="Scan book barcode"
+          className="input text-center text-3xl w-2xl py-8"
+          placeholder="Scan Book Barcode"
           value={bookCode}
           onChange={handleChange} // ✅ Yeh zaroori hai
           onKeyDown={handleKeyDown}
@@ -133,18 +135,20 @@ function App() {
                 <figure>
                   <img
                     src={`https://maktabatulmadinah.com/Images/${data.newCode}/01.png`}
-                    className="max-w-80 rounded-lg"
+                    className="max-w-120 rounded-lg"
                     alt="Book"
                   />
                 </figure>
-                <div className="flex flex-col gap-4 text-center">
-                  <h1 className="text-3xl font-bold">{data.bookNameInUrdu}</h1>
-                  <h1 className="text-3xl font-bold mb-5">
+                <div className="flex flex-col gap-4 ">
+                  <h1 className="text-4xl font-bold text-right">
+                    {data.bookNameInUrdu}
+                  </h1>
+                  <h1 className="text-4xl font-bold mb-5">
                     {data.bookNameInEnglish}
                   </h1>
-                  <button className="btn btn-success btn-xl text-white text-2xl">
-                    Rs. {data.price}/-
-                  </button>
+                  <h4 className="text-emerald-400 text-6xl font-bold" >
+                    Rs. {Math.round(data.price * (90 / 100))}/-
+                  </h4>
                 </div>
               </div>
             </div>
