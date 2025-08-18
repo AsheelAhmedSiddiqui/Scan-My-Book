@@ -147,7 +147,7 @@ function App() {
                     {data.bookNameInUrdu}
                   </h1>
                   <h4 className="text-emerald-400 text-6xl font-bold">
-                    Rs. {Math.round(data.price * (90 / 100))}/-
+                    Rs. {Math.round(data.price * (100 / 100))}/-
                   </h4>
                 </div>
               </div>
