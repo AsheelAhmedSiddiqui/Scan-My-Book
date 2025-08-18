@@ -142,7 +142,7 @@ function App() {
                   <h1 className="text-3xl font-bold mb-5">
                     {data.bookNameInEnglish}
                   </h1>
-                  <button  className="btn btn-success btn-xl text-white text-2xl">
+                  <button className="btn btn-success btn-xl text-white text-2xl">
                     Rs. {data.price}/-
                   </button>
                 </div>
