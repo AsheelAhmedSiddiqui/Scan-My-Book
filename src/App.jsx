@@ -18,8 +18,7 @@ function App() {
 
       const filtered = books.filter(
         (book) =>
-          `0${book.oldCode}` === scannedCode ||
-          `0${book.newCode}` === scannedCode
+          `${book.oldCode}` === scannedCode || `${book.newCode}` === scannedCode
       );
       setFilteredBooks(filtered);
       setTimeout(() => {
@@ -43,7 +42,7 @@ function App() {
         </aside>
         <h1 className="font-medium">Maktaba-Tul-Madinah</h1>
       </footer>
-      <div className="flex flex-col items-center justify-center h-dvh">
+      <div className="flex flex-col items-center justify-center mt-16">
         <input
           ref={inputRef}
           type="text"
