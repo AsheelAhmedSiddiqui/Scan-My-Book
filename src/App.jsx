@@ -79,7 +79,7 @@ function App() {
           pauseOnHover={true}
           className="text-white font-medium text-2xl mr- block"
         >
-          {`Welcome to Maktaba-Tul-Madinah at KWBF (Karachi World Book Fair) 2025, Stall Nos. 61, 62 & 63, Hall No. 2.`}
+          {`Welcome to Maktaba-Tul-Madinah at KWBF (Karachi World Book Fair) 2025, Stall No. 61, 62 & 63, Hall No. 2.`}
         </Marquee>
       </footer>
     </>
