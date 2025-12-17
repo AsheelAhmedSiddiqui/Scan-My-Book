@@ -9,12 +9,12 @@ const BookCard = ({ data }) => {
       <div className="lg:flex h-full">
         {/* Image Section */}
         <div className="relative lg:w-1/3 h-full flex justify-center items-center bg-gray-100 group overflow-hidden">
-          {loading && (
+          {/* {loading && (
             <div className="absolute flex justify-center items-center w-full h-full">
               <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-emerald-400"></div>
             </div>
-          )}
-          {data.newCode && (
+          )} */}
+          {data.newCode ? (
             <img
               src={`https://maktabatulmadinah.com/Images/${`${data.newCode}`}/01.webp`}
               alt={data.bookNameInEnglish}
@@ -22,28 +22,36 @@ const BookCard = ({ data }) => {
                 loading ? "hidden" : "group-hover:scale-105"
               }`}
               onLoad={() => setLoading(false)}
-              onError={() => setLoading(false)}
+            />
+          ) : (
+            <img
+              src={`https://maktabatulmadinah.com/Images/${`${data.newCode}`}/01.webp`}
+              alt={data.bookNameInEnglish}
+              className={`w-full h-full object-cover transform transition-transform duration-500 ${
+                loading ? "hidden" : "group-hover:scale-105"
+              }`}
+              onLoad={() => setLoading(false)}
             />
           )}
         </div>
 
         {/* Details Section */}
-        <div className="lg:w-2/3 py-8 px-0 flex flex-col justify-between">
+        <div className="lg:w-2/3 py-8 px-0 flex flex-col justify-evenly">
           <div>
-            <h1 className="text-4xl lg:text-5xl text-center font-extrabold text-gray-900 mb-2">
-              {data.productNameEnglish.toUpperCase()}
+            <h1 className="text-5xl lg:text-5xl leading-16 text-center font-extrabold text-gray-900 mb-2">
+              {data.bookName}
             </h1>
-            <h2 className="text-3xl lg:text-4xl text-gray-600 font-bold text-center pt-6">
-              {data.productNameUrdu}
-            </h2>
           </div>
 
           <div className="mt-6 flex items-center justify-center">
-            <span className="text-3xl lg:text-9xl font-bold text-black px-4 py-2 rounded-xl">
+            <span
+              style={{ fontFamily: "Digital-7" }}
+              className="text-3xl lg:text-9xl font-bold text-black px-4 py-2 rounded-xl"
+            >
               Rs.{" "}
-              {Math.round(
-                data.retailAfterDiscount - data.retailAfterDiscount * 0.2
-              )}{" "}
+              {data.policyDiscount === "ON"
+                ? Math.round(data.netAmount - data.netAmount * 0.2)
+                : Math.round(data.netAmount)}{" "}
               /-
             </span>
           </div>
